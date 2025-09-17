@@ -1,4 +1,5 @@
-import 'package:cardinal_quotes_app/src/features/home/screens/home_screen.dart';
+import 'package:cardinal_quotes_app/src/constants/app_theme.dart';
+import 'package:cardinal_quotes_app/src/features/authentication/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +12,10 @@ class CardinalQuotesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Cardinal Quotes',
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(
-      ),
+      theme: AppTheme.lightTheme,
+      home: const SignUpScreen(),
     );
   }
 }
