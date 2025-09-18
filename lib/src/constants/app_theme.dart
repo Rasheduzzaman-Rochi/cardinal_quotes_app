@@ -4,56 +4,58 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   AppTheme._();
 
-  // Core App Colors
-  static const Color _primaryColor = Color(0xFFC93F28); // Main deep orange/red
-  static const Color _backgroundColor = Color(0xFFF5EFE5); // Creamy background
+  static const Color primaryColor = Color(0xFFC93F28); // Main deep orange/red
+  static const Color backgroundColor = Color(0xFFFEF0D6); // Creamy background
 
   // Text Colors
-  static const Color _darkTextColor = Color(
-    0xFF591A0E,
-  ); // For text on light backgrounds (like cream)
-  static const Color _lightTextColor = Color(
-    0xFFFEF0D6,
-  ); // For text on dark backgrounds (like orange/red)
+  static const Color darkTextColor = Color(0xFF52180D);
+  static const Color lightTextColor = Color(0xFFFEF0D6);
 
-  // --- THEME DATA CONFIGURATION ---
+  // Component-Specific Colors from the design
+  static const Color buttonBrown = Color(0xFF8B5742);
+  static const Color buttonBrownDark = Color(0xFF52180D);
+  static const Color textFieldBorder = Color(0xFFDCC8AF);
+  static const Color unselectedBorder = Color(0xFF976E5C);
+
+  // --- MAIN THEME DATA ---
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
 
-    primaryColor: _primaryColor,
-    scaffoldBackgroundColor: _backgroundColor,
+    primaryColor: primaryColor,
+    scaffoldBackgroundColor: backgroundColor,
 
     // --- Color Scheme ---
-    // We define how colors are used semantically.
+    // Defines the overall color configuration for the app.
     colorScheme: const ColorScheme.light(
-      primary: _primaryColor,
-      onPrimary: _lightTextColor,
+      primary: primaryColor,
+      onPrimary: lightTextColor, // Text on primary color surfaces (e.g., buttons)
 
-      background: _backgroundColor,
-      onBackground: _darkTextColor, // Default text color for the app background
+      background: backgroundColor,
+      onBackground: darkTextColor, // Default text color for the app background
 
-      surface: _backgroundColor, // Color for surfaces like cards
-      onSurface: _darkTextColor, // Default text color for widgets on surfaces
+      surface: backgroundColor, // Color for surfaces like cards
+      onSurface: darkTextColor, // Default text color on surfaces
     ),
 
     // --- Text Theme ---
-    // Set 'Raleway' as the default font and apply the default text color.
+    // Sets 'Raleway' as the default font and applies the default text color.
     textTheme: GoogleFonts.ralewayTextTheme().apply(
-      bodyColor: _darkTextColor, // Default color for general text
-      displayColor: _darkTextColor, // Default color for headlines
+      bodyColor: darkTextColor,
+      displayColor: darkTextColor,
     ),
 
     // --- Specific Widget Themes ---
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      iconTheme: IconThemeData(color: _darkTextColor),
+      iconTheme: IconThemeData(color: darkTextColor),
       titleTextStyle: TextStyle(
-        color: _darkTextColor,
+        color: darkTextColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
     ),
   );
 }
+
