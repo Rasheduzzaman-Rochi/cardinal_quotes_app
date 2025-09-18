@@ -1,3 +1,4 @@
+import 'package:cardinal_quotes_app/src/features/main/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
 import '../widgets/custom_textField.dart';
@@ -106,7 +107,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: _isButtonEnabled
                           ? () {
-                              // TODO: Implement login logic and navigate to home screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MainScreen(),
+                                ),
+                              );
                             }
                           : null,
                       style: ElevatedButton.styleFrom(
