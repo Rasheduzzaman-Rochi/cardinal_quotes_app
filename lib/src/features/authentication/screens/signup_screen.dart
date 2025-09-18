@@ -74,15 +74,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 fit: BoxFit.contain,
               ),
             ),
-
             Positioned(
-              top: -25, // As per Figma
+              top: -25,
               right: -25,
-              width: 263, // As per Figma
+              width: 263,
               height: 263,
               child: Image.asset('assets/images/signupBird.png'),
             ),
-
             ListView(
               padding: const EdgeInsets.symmetric(horizontal: 23.0),
               children: [
@@ -95,7 +93,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     }),
                     const SizedBox(width: 65),
                     _buildAuthButton('Log In', !_isSignUpSelected, () {
-                      setState(() => _isSignUpSelected = false);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
                     }),
                   ],
                 ),
