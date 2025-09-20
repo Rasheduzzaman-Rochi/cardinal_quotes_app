@@ -15,7 +15,12 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 16, top: 3, bottom: 0, right: 0),
+              padding: const EdgeInsets.only(
+                left: 16,
+                top: 3,
+                bottom: 0,
+                right: 0,
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,13 +100,13 @@ class _TabButtons extends StatelessWidget {
             text: 'Popular',
             iconPath: 'assets/icons/popular.svg',
           ),
-          const SizedBox(width: 23),
+          const SizedBox(width: 21),
           _buildTabButton(
             context,
             text: 'Latest',
             iconPath: 'assets/icons/latest.svg',
           ),
-          const SizedBox(width: 23),
+          const SizedBox(width: 21),
           _buildTabButton(
             context,
             text: 'Gratitude',
@@ -124,16 +129,19 @@ class _TabButtons extends StatelessWidget {
       onPressed: () {},
       icon: SvgPicture.asset(
         iconPath,
-        height: 20,
-        width: 20,
+        height: 24,
+        width: 24,
         colorFilter: ColorFilter.mode(constantColor, BlendMode.srcIn),
       ),
-      label: Text(text),
+      label: Text(
+        text,
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      ),
       style: ElevatedButton.styleFrom(
         foregroundColor: constantColor,
         backgroundColor: colorScheme.background,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 17),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       ),
     );
   }
@@ -255,7 +263,8 @@ class _FeaturedSection extends StatelessWidget {
 
     final screenWidth = MediaQuery.of(context).size.width;
     // The new parent Padding has a left padding of 24.
-    final availableWidth = screenWidth - (24.0 + 16.0); // 24 left, 16 right (from parent ListView)
+    final availableWidth =
+        screenWidth - (24.0 + 16.0); // 24 left, 16 right (from parent ListView)
     // Formula to show ~2.2 items.
     final cardWidth = (availableWidth - (1.2 * 12.0)) / 2.5;
 
@@ -303,36 +312,36 @@ class _FeaturedSection extends StatelessWidget {
             height: isSingleItem ? 160 : 130,
             child: isSingleItem
                 ? Padding(
-              padding: const EdgeInsets.only(right: 23.0,bottom: 21),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                  imagePaths.first,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) =>
-                      Container(color: Colors.grey),
-                ),
-              ),
-            )
-                : ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: imagePaths.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      imagePaths[index],
-                      width: cardWidth,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          Container(color: Colors.grey),
+                    padding: const EdgeInsets.only(right: 23.0, bottom: 21),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        imagePaths.first,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            Container(color: Colors.grey),
+                      ),
                     ),
+                  )
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: imagePaths.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            imagePaths[index],
+                            width: cardWidth,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) =>
+                                Container(color: Colors.grey),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ],
       ),
