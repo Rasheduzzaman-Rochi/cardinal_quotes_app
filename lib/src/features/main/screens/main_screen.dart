@@ -58,9 +58,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // The body will display the page corresponding to the selected index
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: _pages.elementAt(_selectedIndex),
-      // Our custom-built navigation bar
       bottomNavigationBar: CustomNavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,

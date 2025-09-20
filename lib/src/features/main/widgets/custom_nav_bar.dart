@@ -61,7 +61,7 @@ class CustomNavBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           // Generate navigation items dynamically from the list
           children: _navItems.asMap().entries.map((entry) {
             final int index = entry.key;
@@ -88,30 +88,28 @@ class CustomNavBar extends StatelessWidget {
     final bool isSelected = selectedIndex == index;
     final color = isSelected ? AppTheme.buttonBrownDark : AppTheme.unselectedBorder;
 
-    // --- UPDATED LOGIC ---
-    // Choose the icon path based on the selection state
     final String currentIconPath = isSelected ? filledIconPath : iconPath;
 
     return InkWell(
       onTap: () => onItemTapped(index),
       borderRadius: BorderRadius.circular(20),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 4),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
               currentIconPath, // Use the dynamically chosen icon path
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-              height: 24,
+              height: 28,
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               label,
               style: TextStyle(
                 color: color,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                fontSize: 12,
+                fontSize: 13,
               ),
             ),
           ],
