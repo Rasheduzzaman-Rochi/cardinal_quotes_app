@@ -39,19 +39,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // A variable to keep track of the currently selected tab index
   int _selectedIndex = 0;
 
-  // A list of pages corresponding to each tab in the navigation bar
   static const List<Widget> _pages = <Widget>[
-    HomeScreen(), // Your actual home screen
+    HomeScreen(),
     SoundsScreen(),
     SoulScreen(),
     TopScreen(),
     MoreScreen(),
   ];
 
-  // This function will be called when a navigation bar item is tapped
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
