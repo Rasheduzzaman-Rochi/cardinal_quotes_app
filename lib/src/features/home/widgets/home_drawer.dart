@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
+import '../../authentication/screens/login_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
@@ -11,16 +12,15 @@ class HomeDrawer extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Drawer(
-      // 2. Set the drawer width to be 80% of the screen width
-      width: screenWidth * 0.6,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(30),
-          bottomRight: Radius.circular(30),
-        ),
-      ),
+      width: (screenWidth * 0.6) + 10,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       child: Container(
-        color: colorScheme.background,
+        margin: const EdgeInsets.only(top: 40, bottom: 40, left: 20),
+        decoration: BoxDecoration(
+          color: colorScheme.background,
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -28,7 +28,7 @@ class HomeDrawer extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: Column(
                 children: [
-                  const SizedBox(height: 13),
+                  const SizedBox(height: 5),
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
@@ -41,30 +41,37 @@ class HomeDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 16),
                   Text(
                     '"Peace comes from within.\nDo not seek it without."',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: colorScheme.onSurface,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: 14,
                       height: 1.3,
                     ),
                   ),
-                  const SizedBox(height: 11),
+                  const SizedBox(height: 09),
                   Text(
                     'Buddha',
                     style: TextStyle(
                       color: colorScheme.onSurface,
-                      fontSize: 17,
+                      fontSize: 15,
                       fontWeight: FontWeight.w900,
+                      shadows: [
+                        Shadow(
+                          color: colorScheme.onSurface.withOpacity(0.30),
+                          offset: const Offset(1, 1),
+                          blurRadius: 2,
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 21),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
@@ -140,9 +147,8 @@ class HomeDrawer extends StatelessWidget {
                     iconPath: 'assets/icons/save.svg',
                     text: 'Save',
                   ),
-
-                  const SizedBox(height: 30),
-                  _buildLogoutButton(colorScheme),
+                  const SizedBox(height: 16),
+                  _buildLogoutButton(context, colorScheme),
                 ],
               ),
             ),
@@ -183,10 +189,14 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildLogoutButton(ColorScheme colorScheme) {
+  Widget _buildLogoutButton(BuildContext context, ColorScheme colorScheme) {
     return InkWell(
       onTap: () {
-        // TODO: Implement logout functionality
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+          (Route<dynamic> route) => false,
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -196,9 +206,15 @@ class HomeDrawer extends StatelessWidget {
             Text(
               'Log Out',
               style: TextStyle(
-                // 3. Made the Log Out text bigger and bolder
                 fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
+                shadows: [
+                  Shadow(
+                    color: colorScheme.onSurface.withOpacity(0.30),
+                    offset: const Offset(1, 1),
+                    blurRadius: 2,
+                  ),
+                ],
                 color: colorScheme.onSurface,
               ),
             ),
