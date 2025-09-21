@@ -1,8 +1,8 @@
+import 'package:cardinal_quotes_app/src/features/home/widgets/home_drawer.dart';
 import 'package:flutter/material.dart';
 import '../../home/screens/home_screen.dart';
 import '../widgets/custom_nav_bar.dart';
 
-// Placeholder widgets for the other screens
 class SoundsScreen extends StatelessWidget {
   const SoundsScreen({super.key});
   @override
@@ -60,6 +60,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: _pages.elementAt(_selectedIndex),
+      drawer: const HomeDrawer(),
       bottomNavigationBar: CustomNavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
