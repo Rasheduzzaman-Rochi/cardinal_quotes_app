@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
+import '../../memorial_cards/screens/add_memorial_card_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
@@ -77,76 +78,20 @@ class HomeDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/popular.svg',
-                    text: 'Popular',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/latest.svg',
-                    text: 'Latest',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/cardinal_sounds.svg',
-                    text: 'Cardinal Sound',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/wallpaper.svg',
-                    text: 'Wallpaper',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/nature_sounds.svg',
-                    text: 'Natural Sound',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/sleeping_sounds.svg',
-                    text: 'Sleeping',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/meditation.svg',
-                    text: 'Meditation',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/short_meditations.svg',
-                    text: 'Short Meditation',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/top_quotes.svg',
-                    text: 'Top Quotes',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/soul_check_in.svg',
-                    text: 'Soul Check-In',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/sacred_journals.svg',
-                    text: 'Sacred Journals',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/medicine_notes.svg',
-                    text: 'Medicine Note',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/memorial_cards.svg',
-                    text: 'Memorial Card',
-                  ),
-                  _buildDrawerItem(
-                    colorScheme,
-                    iconPath: 'assets/icons/save.svg',
-                    text: 'Save',
-                  ),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/popular.svg', text: 'Popular'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/latest.svg', text: 'Latest'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/cardinal_sounds.svg', text: 'Cardinal Sound'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/wallpaper.svg', text: 'Wallpaper'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/nature_sounds.svg', text: 'Natural Sound'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/sleeping_sounds.svg', text: 'Sleeping'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/meditation.svg', text: 'Meditation'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/short_meditations.svg', text: 'Short Meditation'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/top_quotes.svg', text: 'Top Quotes'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/soul_check_in.svg', text: 'Soul Check-In'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/sacred_journals.svg', text: 'Sacred Journals'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/medicine_notes.svg', text: 'Medicine Note'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/memorial_cards.svg', text: 'Memorial Card'),
+                  _buildDrawerItem(context, colorScheme, iconPath: 'assets/icons/save.svg', text: 'Save'),
                   const SizedBox(height: 16),
                   _buildLogoutButton(context, colorScheme),
                 ],
@@ -159,6 +104,7 @@ class HomeDrawer extends StatelessWidget {
   }
 
   Widget _buildDrawerItem(
+    BuildContext context,
     ColorScheme colorScheme, {
     required String iconPath,
     required String text,
@@ -184,7 +130,15 @@ class HomeDrawer extends StatelessWidget {
         ),
       ),
       onTap: () {
-        // TODO: Implement navigation for each drawer item.
+        Navigator.pop(context);
+        if (text == 'Memorial Card') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddMemorialCardScreen(),
+            ),
+          );
+        }
       },
     );
   }
