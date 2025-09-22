@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../constants/app_theme.dart';
+import '../../memorial_cards/screens/add_memorial_card_screen.dart';
 
 class FeatureGrid extends StatelessWidget {
   const FeatureGrid({super.key});
@@ -48,10 +48,10 @@ class FeatureGrid extends StatelessWidget {
   }
 
   Widget _buildGridItem(
-      BuildContext context, {
-        required String title,
-        required String iconPath,
-      }) {
+    BuildContext context, {
+    required String title,
+    required String iconPath,
+  }) {
     final colorScheme = Theme.of(context).colorScheme;
 
     Widget iconWidget;
@@ -76,27 +76,40 @@ class FeatureGrid extends StatelessWidget {
       );
     }
 
-    return Container(
-      decoration: BoxDecoration(
-        color: colorScheme.background,
-        borderRadius: BorderRadius.circular(9),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          iconWidget,
-          const SizedBox(height: 4),
-          Text(
-            title.replaceAll(' ', '\n'),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: colorScheme.onSurface,
-              fontSize: 13,
-              height: 1.1,
+    return InkWell(
+      onTap: () {
+        if (title == 'Memorial Cards') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddMemorialCardScreen(),
             ),
-          ),
-        ],
+          );
+        }
+      },
+      borderRadius: BorderRadius.circular(9),
+      child: Container(
+        decoration: BoxDecoration(
+          color: colorScheme.background,
+          borderRadius: BorderRadius.circular(9),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            iconWidget,
+            const SizedBox(height: 4),
+            Text(
+              title.replaceAll(' ', '\n'),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: colorScheme.onSurface,
+                fontSize: 13,
+                height: 1.1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
