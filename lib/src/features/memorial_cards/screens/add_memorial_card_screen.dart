@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
+import '../../main/screens/main_screen.dart';
 
 class AddMemorialCardScreen extends StatefulWidget {
   const AddMemorialCardScreen({super.key});
@@ -32,7 +33,8 @@ class _AddMemorialCardScreenState extends State<AddMemorialCardScreen> {
   }
 
   void _validateFields() {
-    final isEnabled = _nameController.text.isNotEmpty &&
+    final isEnabled =
+        _nameController.text.isNotEmpty &&
         _dobController.text.isNotEmpty &&
         _dodController.text.isNotEmpty;
     if (_isContinueEnabled != isEnabled) {
@@ -62,10 +64,7 @@ class _AddMemorialCardScreenState extends State<AddMemorialCardScreen> {
               children: [
                 _buildPhotoPlaceholder(context),
                 const SizedBox(height: 24),
-                _buildTextField(
-                  hintText: 'Name',
-                  controller: _nameController,
-                ),
+                _buildTextField(hintText: 'Name', controller: _nameController),
                 const SizedBox(height: 16),
                 _buildTextField(
                   hintText: 'Date Of Birth',
@@ -192,49 +191,50 @@ class _AddMemorialCardScreenState extends State<AddMemorialCardScreen> {
           child: ElevatedButton(
             onPressed: _isContinueEnabled
                 ? () {
-
-            }
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainScreen(),
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
+                  }
                 : null,
             style: ButtonStyle(
               padding: MaterialStateProperty.all(
                 const EdgeInsets.symmetric(vertical: 12),
               ),
               shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
-              backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return AppTheme.buttonBrown.withOpacity(0.5);
-                  }
-                  return AppTheme.buttonBrownDark;
-                },
-              ),
-              foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return Colors.white.withOpacity(0.7);
-                  }
-                  return Colors.white;
-                },
-              ),
-              elevation: MaterialStateProperty.resolveWith<double>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return 0;
-                  }
-                  return 2;
-                },
-              ),
+              backgroundColor: MaterialStateProperty.resolveWith<Color>((
+                Set<MaterialState> states,
+              ) {
+                if (states.contains(MaterialState.disabled)) {
+                  return AppTheme.buttonBrown.withOpacity(0.5);
+                }
+                return AppTheme.buttonBrownDark;
+              }),
+              foregroundColor: MaterialStateProperty.resolveWith<Color>((
+                Set<MaterialState> states,
+              ) {
+                if (states.contains(MaterialState.disabled)) {
+                  return Colors.white.withOpacity(0.7);
+                }
+                return Colors.white;
+              }),
+              elevation: MaterialStateProperty.resolveWith<double>((
+                Set<MaterialState> states,
+              ) {
+                if (states.contains(MaterialState.disabled)) {
+                  return 0;
+                }
+                return 2;
+              }),
             ),
             child: const Text(
               'Continue',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),
         ),
