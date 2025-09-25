@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../constants/app_theme.dart';
 
 class AudioListScreen extends StatelessWidget {
   const AudioListScreen({super.key});
@@ -58,7 +59,12 @@ class AudioListScreen extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.only(left: 21.0, right: 21.0, top: 12, bottom: 10.0),
+        padding: const EdgeInsets.only(
+          left: 21.0,
+          right: 21.0,
+          top: 12,
+          bottom: 10.0,
+        ),
         itemCount: _audioItems.length,
         itemBuilder: (context, index) {
           final item = _audioItems[index];
@@ -133,7 +139,7 @@ class _AudioCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return AspectRatio(
-      aspectRatio: 16 / 9,
+      aspectRatio: 16 / 10,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -146,11 +152,17 @@ class _AudioCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(12),
-            width: 200,
+            width: 190,
+            height: 180,
+            padding: const EdgeInsets.only(
+              left: 12,
+              right: 12,
+              top: 12,
+              bottom: 4,
+            ),
             decoration: BoxDecoration(
-              color: colorScheme.background.withOpacity(0.85),
-              borderRadius: BorderRadius.circular(16),
+              color: colorScheme.background,
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.15),
@@ -162,34 +174,86 @@ class _AudioCard extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset(
-                  'assets/icons/sound_wave.svg',
-                  height: 30,
-                  colorFilter: ColorFilter.mode(
-                    colorScheme.onSurface,
-                    BlendMode.srcIn,
+                SizedBox(
+                  height: 100,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          imagePath,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        'assets/icons/sound_wave.svg',
+                        height: 110,
+                        color: colorScheme.background,
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.play_arrow, color: colorScheme.onSurface),
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: colorScheme.onSurface,
-                      ),
+                    Icon(
+                      Icons.play_arrow_rounded,
+                      color: colorScheme.onSurface,
+                      size: 32,
                     ),
                     Text(
                       '10.00',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
                         color: colorScheme.onSurface,
                       ),
                     ),
                   ],
+                ),
+                const SizedBox.shrink(),
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    trackHeight: 4.0,
+                    trackShape: const RoundedRectSliderTrackShape(),
+                    activeTrackColor: AppTheme.buttonBrownDark,
+                    inactiveTrackColor: AppTheme.buttonBrownDark.withOpacity(
+                      0.3,
+                    ),
+                    thumbShape: const RoundSliderThumbShape(
+                      enabledThumbRadius: 0.0,
+                    ),
+                    overlayShape: const RoundSliderOverlayShape(
+                      overlayRadius: 0.0,
+                    ),
+                  ),
+                  child: Slider(value: 1, onChanged: (value) {}),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 16,
+                    color: colorScheme.onSurface,
+                    shadows: [
+                      Shadow(
+                        color: colorScheme.onSurface.withOpacity(0.15),
+                        offset: const Offset(1, 1),
+                        blurRadius: 1,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
