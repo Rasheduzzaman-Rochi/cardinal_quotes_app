@@ -237,7 +237,7 @@ class _AudioCard extends StatelessWidget {
                       overlayRadius: 0.0,
                     ),
                   ),
-                  child: Slider(value: 0.8, onChanged: (value) {}),
+                  child: Slider(value: 0.85, onChanged: (value) {}),
                 ),
                 const SizedBox(height: 2),
                 Text(
