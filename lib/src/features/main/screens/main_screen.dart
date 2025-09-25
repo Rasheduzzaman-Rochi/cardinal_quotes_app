@@ -1,14 +1,8 @@
 import 'package:cardinal_quotes_app/src/features/home/widgets/home_drawer.dart';
 import 'package:flutter/material.dart';
 import '../../home/screens/home_screen.dart';
+import '../../sounds/screens/audio_list_screen.dart';
 import '../widgets/custom_nav_bar.dart';
-
-class SoundsScreen extends StatelessWidget {
-  const SoundsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Sounds Screen')));
-}
 
 class SoulScreen extends StatelessWidget {
   const SoulScreen({super.key});
@@ -43,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
-    SoundsScreen(),
+    AudioListScreen(),
     SoulScreen(),
     TopScreen(),
     MoreScreen(),
