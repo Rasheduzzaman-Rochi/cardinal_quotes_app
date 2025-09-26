@@ -34,7 +34,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-
   late final List<Widget> _pages;
 
   @override
@@ -59,10 +58,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _selectedIndex, children: _pages),
       drawer: HomeDrawer(onItemTapped: _onItemTapped),
       bottomNavigationBar: CustomNavBar(
         selectedIndex: _selectedIndex,
