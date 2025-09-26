@@ -35,13 +35,19 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[
-    HomeScreen(),
-    AudioListScreen(),
-    SoulScreen(),
-    TopScreen(),
-    MoreScreen(),
-  ];
+  late final List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = <Widget>[
+      HomeScreen(onTabChange: _onItemTapped),
+      AudioListScreen(onBackTapped: () => _onItemTapped(0)),
+      const SoulScreen(),
+      const TopScreen(),
+      const MoreScreen(),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -53,8 +59,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: _pages.elementAt(_selectedIndex),
-      drawer: const HomeDrawer(),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
+      ),
+      drawer: HomeDrawer(onItemTapped: _onItemTapped),
       bottomNavigationBar: CustomNavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,

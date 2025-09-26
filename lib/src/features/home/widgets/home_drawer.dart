@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
 import '../../memorial_cards/screens/add_memorial_card_screen.dart';
-import '../../sounds/screens/audio_list_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({super.key});
+  final ValueChanged<int> onItemTapped;
+  const HomeDrawer({super.key, required this.onItemTapped});
 
   @override
   Widget build(BuildContext context) {
@@ -210,10 +210,7 @@ class HomeDrawer extends StatelessWidget {
             ),
           );
         } else if (text == 'Sleeping') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AudioListScreen()),
-          );
+          onItemTapped(1);
         }
       },
     );

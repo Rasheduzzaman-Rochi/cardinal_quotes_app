@@ -4,7 +4,8 @@ import '../widgets/featured_section.dart';
 import '../widgets/tab_buttons.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final ValueChanged<int> onTabChange;
+  const HomeScreen({super.key, required this.onTabChange});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +37,15 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   const SizedBox(width: 12),
-                  const Expanded(child: TabButtons()),
+                  // Pass the callback to the TabButtons widget
+                  Expanded(child: TabButtons(onTabChange: onTabChange)),
                 ],
               ),
             ),
             const SizedBox(height: 16),
 
-            const FeatureGrid(),
+            // UPDATED: Removed the unnecessary 'onItemTapped' parameter.
+            FeatureGrid(onTabChange: onTabChange),
             const SizedBox(height: 18),
 
             FeaturedSection(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TabButtons extends StatelessWidget {
-  const TabButtons({super.key});
+  const TabButtons({super.key, required ValueChanged<int> onTabChange});
 
   @override
   Widget build(BuildContext context) {

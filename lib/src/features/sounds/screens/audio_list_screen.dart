@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/AudioCard.dart';
 
 class AudioListScreen extends StatelessWidget {
-  const AudioListScreen({super.key});
+  const AudioListScreen({super.key, required void Function() onBackTapped});
 
   static const List<Map<String, String>> _audioItems = [
     {

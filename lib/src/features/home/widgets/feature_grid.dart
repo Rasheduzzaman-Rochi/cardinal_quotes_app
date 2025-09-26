@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../memorial_cards/screens/add_memorial_card_screen.dart';
-import '../../sounds/screens/audio_list_screen.dart';
 
 class FeatureGrid extends StatelessWidget {
-  const FeatureGrid({super.key});
+
+  final ValueChanged<int> onTabChange;
+  const FeatureGrid({super.key, required this.onTabChange});
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +50,10 @@ class FeatureGrid extends StatelessWidget {
   }
 
   Widget _buildGridItem(
-    BuildContext context, {
-    required String title,
-    required String iconPath,
-  }) {
+      BuildContext context, {
+        required String title,
+        required String iconPath,
+      }) {
     final colorScheme = Theme.of(context).colorScheme;
 
     Widget iconWidget;
@@ -87,10 +88,8 @@ class FeatureGrid extends StatelessWidget {
             ),
           );
         } else if (title == 'Sleeping Sounds') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AudioListScreen()),
-          );
+          // Changed from onItemTapped to onTabChange to match the constructor.
+          onTabChange(1);
         }
       },
       borderRadius: BorderRadius.circular(9),
