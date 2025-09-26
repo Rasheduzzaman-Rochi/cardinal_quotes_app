@@ -25,27 +25,23 @@ class AppTheme {
     primaryColor: primaryColor,
     scaffoldBackgroundColor: backgroundColor,
 
-    // --- Color Scheme ---
-    // Defines the overall color configuration for the app.
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
-      onPrimary: lightTextColor, // Text on primary color surfaces (e.g., buttons)
+      onPrimary: lightTextColor,
 
       background: backgroundColor,
-      onBackground: darkTextColor, // Default text color for the app background
+      onBackground: darkTextColor,
 
-      surface: backgroundColor, // Color for surfaces like cards
-      onSurface: darkTextColor, // Default text color on surfaces
+      surface: backgroundColor,
+      onSurface: darkTextColor,
     ),
 
-    // --- Text Theme ---
-    // Sets 'Raleway' as the default font and applies the default text color.
+
     textTheme: GoogleFonts.ralewayTextTheme().apply(
       bodyColor: darkTextColor,
       displayColor: darkTextColor,
     ),
 
-    // --- Specific Widget Themes ---
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
