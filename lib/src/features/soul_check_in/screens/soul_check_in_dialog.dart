@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
+import '../widgets/emotionChoice.dart';
 
 class SoulCheckInDialog extends StatelessWidget {
   const SoulCheckInDialog({super.key});
@@ -24,7 +25,6 @@ class SoulCheckInDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 const SizedBox(width: 32),
                 Expanded(
                   child: Padding(
@@ -62,19 +62,19 @@ class SoulCheckInDialog extends StatelessWidget {
                 Row(
                   children: const [
                     Expanded(
-                      child: _EmotionChoice(
+                      child: EmotionChoice(
                         icon: Icons.sentiment_very_satisfied_outlined,
                         text: 'Awesome',
                       ),
                     ),
                     Expanded(
-                      child: _EmotionChoice(
+                      child: EmotionChoice(
                         icon: Icons.sentiment_satisfied_outlined,
                         text: 'Good',
                       ),
                     ),
                     Expanded(
-                      child: _EmotionChoice(
+                      child: EmotionChoice(
                         icon: Icons.sentiment_neutral_outlined,
                         text: 'Neutral',
                       ),
@@ -85,72 +85,23 @@ class SoulCheckInDialog extends StatelessWidget {
                 Row(
                   children: const [
                     Expanded(
-                      child: _EmotionChoice(
+                      child: EmotionChoice(
                         icon: Icons.sentiment_dissatisfied_outlined,
                         text: 'Bad',
                       ),
                     ),
                     Expanded(
-                      child: _EmotionChoice(
+                      child: EmotionChoice(
                         icon: Icons.sentiment_very_dissatisfied_outlined,
                         text: 'Terrible',
                       ),
                     ),
-                    Expanded(
-                      child: _EmotionChoice(
-                        text: 'Others',
-                        icon: null,
-                      ),
-                    ),
+                    Expanded(child: EmotionChoice(text: 'Others', icon: null)),
                   ],
                 ),
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _EmotionChoice extends StatelessWidget {
-  final IconData? icon;
-  final String text;
-
-  const _EmotionChoice({this.icon, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        // TODO: Implement emotion selection logic
-        Navigator.of(context).pop();
-      },
-      borderRadius: BorderRadius.circular(8),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (icon != null) ...[
-                Icon(
-                  icon,
-                  color: Theme.of(context).colorScheme.onSurface,
-                  size: 20,
-                ),
-                const SizedBox(width: 6),
-              ],
-              Text(
-                text,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
