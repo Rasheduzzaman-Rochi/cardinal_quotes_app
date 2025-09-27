@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../memorial_cards/screens/add_memorial_card_screen.dart';
-import '../../soul_check_in/widgets/soul_check_in_dialog.dart';
+import '../../soul_check_in/screens/soul_check_in_dialog.dart';
 
 class FeatureGrid extends StatelessWidget {
   final ValueChanged<int> onTabChange;
@@ -90,9 +90,12 @@ class FeatureGrid extends StatelessWidget {
         } else if (title == 'Sleeping Sounds') {
           onTabChange(1);
         } else if (title == 'Soul Check-In') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const SoulCheckInDialog()),
+          showDialog(
+            context: context,
+            barrierColor: colorScheme.primary,
+            builder: (BuildContext context) {
+              return const SoulCheckInDialog();
+            },
           );
         }
       },
