@@ -31,10 +31,14 @@ class EmotionChoice extends StatelessWidget {
               ],
               Text(
                 text,
+                textAlign: icon == null ? TextAlign.center : TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
+                  fontSize: 13,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
+                softWrap: false,
+                overflow: TextOverflow.fade,
               ),
             ],
           ),
