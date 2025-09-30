@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
-import '../../memorial_cards/screens/add_memorial_card_screen.dart';
+import '../../memorial_cards/screens/memorial_card_screen.dart';
 import '../../soul_check_in/screens/soul_check_in_dialog.dart';
 
 class FeatureGrid extends StatelessWidget {
@@ -84,7 +84,7 @@ class FeatureGrid extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const AddMemorialCardScreen(),
+              builder: (context) => const MemorialCardScreen(),
             ),
           );
         } else if (title == 'Sleeping Sounds') {

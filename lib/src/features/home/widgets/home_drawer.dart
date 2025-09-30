@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
-import '../../memorial_cards/screens/add_memorial_card_screen.dart';
+import '../../memorial_cards/screens/memorial_card_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   final ValueChanged<int> onItemTapped;
@@ -206,7 +206,7 @@ class HomeDrawer extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const AddMemorialCardScreen(),
+              builder: (context) => const MemorialCardScreen(),
             ),
           );
         } else if (text == 'Sleeping') {
