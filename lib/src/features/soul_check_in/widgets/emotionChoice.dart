@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/share_something_dialog.dart';
 
 class EmotionChoice extends StatelessWidget {
   final IconData? icon;
@@ -10,8 +11,12 @@ class EmotionChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // TODO: Implement emotion selection logic
         Navigator.of(context).pop();
+        showDialog(
+          context: context,
+          barrierColor: Theme.of(context).colorScheme.primary,
+          builder: (context) => const ShareSomethingDialog(),
+        );
       },
       borderRadius: BorderRadius.circular(8),
       child: Padding(
