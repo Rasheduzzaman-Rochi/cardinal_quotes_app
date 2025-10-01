@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../common_widgets/memorial_image_card.dart';
 
-class MemorialCardScreen extends StatelessWidget {
-  const MemorialCardScreen({super.key});
+class SoulScreen extends StatelessWidget {
+
+  final VoidCallback onBackTapped;
+  const SoulScreen({super.key, required this.onBackTapped});
 
   static const List<Map<String, String>> _memorialItems = [
     {
@@ -38,11 +40,11 @@ class MemorialCardScreen extends StatelessWidget {
                     color: colorScheme.onPrimary,
                     size: 35,
                   ),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: onBackTapped,
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  'Memorial Card',
+                  'Soul Check-In',
                   style: TextStyle(
                     color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
