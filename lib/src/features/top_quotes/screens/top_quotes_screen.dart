@@ -5,7 +5,7 @@ class TopQuotesScreen extends StatelessWidget {
   final VoidCallback onBackTapped;
   const TopQuotesScreen({super.key, required this.onBackTapped});
 
-  static const List<Map<String, String>> _memorialItems = [
+  static const List<Map<String, String>> _topQuotesItems = [
     {
       'imagePath': 'assets/images/memo_1.jpg',
       'tags': '#Ambition    #Inspiration    #Motivational',
@@ -24,7 +24,7 @@ class TopQuotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ContentListScreen(
       title: 'Top Quotes',
-      items: _memorialItems,
+      items: _topQuotesItems,
       onBackTapped: onBackTapped,
     );
   }

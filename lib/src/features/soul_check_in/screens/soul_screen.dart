@@ -5,7 +5,7 @@ class SoulScreen extends StatelessWidget {
   final VoidCallback onBackTapped;
   const SoulScreen({super.key, required this.onBackTapped});
 
-  static const List<Map<String, String>> _memorialItems = [
+  static const List<Map<String, String>> _soulCheckItems = [
     {
       'imagePath': 'assets/images/memo_1.jpg',
       'tags': '#Ambition    #Inspiration    #Motivational',
@@ -24,7 +24,7 @@ class SoulScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ContentListScreen(
       title: 'Soul Check-In',
-      items: _memorialItems,
+      items: _soulCheckItems,
       onBackTapped: onBackTapped,
     );
   }
