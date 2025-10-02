@@ -3,14 +3,8 @@ import 'package:flutter/material.dart';
 import '../../home/screens/home_screen.dart';
 import '../../soul_check_in/screens/soul_screen.dart';
 import '../../sounds/screens/audio_list_screen.dart';
+import '../../top_quotes/screens/top_quotes_screen.dart';
 import '../widgets/custom_nav_bar.dart';
-
-class TopScreen extends StatelessWidget {
-  const TopScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Top Screen')));
-}
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -37,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
       HomeScreen(onTabChange: _onItemTapped),
       AudioListScreen(onBackTapped: () => _onItemTapped(0)),
       SoulScreen(onBackTapped: () => _onItemTapped(0)),
-      const TopScreen(),
+      TopQuotesScreen(onBackTapped: () => _onItemTapped(0)),
       const MoreScreen(),
     ];
   }
