@@ -83,9 +83,7 @@ class FeatureGrid extends StatelessWidget {
         if (title == 'Memorial Cards') {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const MemorialCardScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const MemorialCardScreen()),
           );
         } else if (title == 'Sleeping Sounds') {
           onTabChange(1);
@@ -97,6 +95,8 @@ class FeatureGrid extends StatelessWidget {
               return const SoulCheckInDialog();
             },
           );
+        } else if (title == 'Top Quotes') {
+          onTabChange(3);
         }
       },
       borderRadius: BorderRadius.circular(9),
