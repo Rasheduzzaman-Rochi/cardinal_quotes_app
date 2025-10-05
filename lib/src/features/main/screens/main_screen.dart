@@ -1,17 +1,11 @@
 import 'package:cardinal_quotes_app/src/features/home/widgets/home_drawer.dart';
 import 'package:flutter/material.dart';
 import '../../home/screens/home_screen.dart';
+import '../../more/widgets/notification_dialog.dart';
 import '../../soul_check_in/screens/soul_screen.dart';
 import '../../sounds/screens/audio_list_screen.dart';
 import '../../top_quotes/screens/top_quotes_screen.dart';
 import '../widgets/custom_nav_bar.dart';
-
-class MoreScreen extends StatelessWidget {
-  const MoreScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('More Screen')));
-}
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -32,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
       AudioListScreen(onBackTapped: () => _onItemTapped(0)),
       SoulScreen(onBackTapped: () => _onItemTapped(0)),
       TopQuotesScreen(onBackTapped: () => _onItemTapped(0)),
-      const MoreScreen(),
+      NotificationDialog(),
     ];
   }
 
