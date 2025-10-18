@@ -5,14 +5,15 @@ import '../../../constants/app_theme.dart';
 class CustomNavBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;
+  final VoidCallback onMoreTapped;
 
   const CustomNavBar({
     super.key,
     required this.selectedIndex,
     required this.onItemTapped,
+    required this.onMoreTapped,
   });
 
-  // A list to hold the data for each navigation item
   static final List<Map<String, String>> _navItems = [
     {
       'icon': 'assets/icons/home.svg',
@@ -62,7 +63,6 @@ class CustomNavBar extends StatelessWidget {
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          // Generate navigation items dynamically from the list
           children: _navItems.asMap().entries.map((entry) {
             final int index = entry.key;
             final Map<String, String> item = entry.value;
@@ -91,7 +91,7 @@ class CustomNavBar extends StatelessWidget {
     final String currentIconPath = isSelected ? filledIconPath : iconPath;
 
     return InkWell(
-      onTap: () => onItemTapped(index),
+      onTap: () => (index == 4) ? onMoreTapped() : onItemTapped(index),
       borderRadius: BorderRadius.circular(20),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 4),
@@ -99,7 +99,7 @@ class CustomNavBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
-              currentIconPath, // Use the dynamically chosen icon path
+              currentIconPath,
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
               height: 28,
             ),

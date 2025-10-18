@@ -26,7 +26,6 @@ class _MainScreenState extends State<MainScreen> {
       AudioListScreen(onBackTapped: () => _onItemTapped(0)),
       SoulScreen(onBackTapped: () => _onItemTapped(0)),
       TopQuotesScreen(onBackTapped: () => _onItemTapped(0)),
-      NotificationDialog(),
     ];
   }
 
@@ -34,6 +33,14 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void _showNotificationDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => const NotificationDialog(),
+      useSafeArea: false,
+    );
   }
 
   @override
@@ -45,6 +52,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: CustomNavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
+        onMoreTapped: _showNotificationDialog,
       ),
     );
   }
