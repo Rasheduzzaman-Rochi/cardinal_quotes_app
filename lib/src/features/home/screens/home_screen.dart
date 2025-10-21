@@ -44,7 +44,6 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // UPDATED: Removed the unnecessary 'onItemTapped' parameter.
             FeatureGrid(onTabChange: onTabChange),
             const SizedBox(height: 18),
 
