@@ -105,7 +105,7 @@ class _SaveScreenState extends State<SaveScreen> {
             _buildTabButton(
               context: context,
               text: 'Audios',
-              iconPath: 'assets/icons/cardinal_sounds.svg', // Using your icon
+              iconPath: 'assets/icons/sounds.svg', // Using your icon
               index: 0,
             ),
             const SizedBox(width: 12),
@@ -144,7 +144,7 @@ class _SaveScreenState extends State<SaveScreen> {
   }) {
     final bool isSelected = _selectedTabIndex == index;
     final colorScheme = Theme.of(context).colorScheme;
-    final constantColor = colorScheme.onSurface;
+    final selectedColor = colorScheme.onSurface;
 
     return InkWell(
       onTap: () {
@@ -168,7 +168,7 @@ class _SaveScreenState extends State<SaveScreen> {
               height: 16,
               width: 16,
               colorFilter: ColorFilter.mode(
-                isSelected ? constantColor : colorScheme.onPrimary,
+                isSelected ? selectedColor : colorScheme.onPrimary,
                 BlendMode.srcIn,
               ),
             ),
@@ -176,7 +176,7 @@ class _SaveScreenState extends State<SaveScreen> {
             Text(
               text,
               style: TextStyle(
-                color: isSelected ? constantColor : colorScheme.onPrimary,
+                color: isSelected ? selectedColor : colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -199,9 +199,9 @@ class _SaveScreenState extends State<SaveScreen> {
       children: [
         // Reusing the AudioCard as requested
         AudioCard(
-          title: _wiperAudio['title']!,
-          imagePath: _wiperAudio['imagePath']!,
-          tags: _wiperAudio['tags']!,
+          title: _wiperAudio['title'] ?? '',
+          imagePath: _wiperAudio['imagePath'] ?? '',
+          tags: _wiperAudio['tags'] ?? '',
         ),
         // Add more saved audios here...
       ],
