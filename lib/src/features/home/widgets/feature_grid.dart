@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../memorial_cards/screens/memorial_card_screen.dart';
+import '../../save/screens/save_screens.dart';
 import '../../soul_check_in/screens/soul_check_in_dialog.dart';
 
 class FeatureGrid extends StatelessWidget {
@@ -97,6 +98,11 @@ class FeatureGrid extends StatelessWidget {
           );
         } else if (title == 'Top Quotes') {
           onTabChange(3);
+        } else if (title == 'Save') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SaveScreen()),
+          );
         }
       },
       borderRadius: BorderRadius.circular(9),
