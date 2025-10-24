@@ -25,11 +25,7 @@ class _SaveScreenState extends State<SaveScreen> {
     {
       'imagePath': 'assets/images/memo_1.jpg',
       'tags': '#Ambition    #Inspiration    #Motivational',
-    },
-    {
-      'imagePath': 'assets/images/memo_2.jpg',
-      'tags': '#Ambition    #Inspiration    #Motivational',
-    },
+    }
   ];
 
   @override
@@ -219,11 +215,21 @@ class _SaveScreenState extends State<SaveScreen> {
 
   // Placeholder content for 'Quotes' tab
   Widget _buildQuotesContent() {
-    return Center(
-      child: Text(
-        'Saved Quotes will appear here.',
-        style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 16),
+    return ListView.builder(
+      padding: const EdgeInsets.only(
+        left: 21.0,
+        right: 21.0,
+        top: 0,
+        bottom: 10.0,
       ),
+      itemCount: _memorialItems.length,
+      itemBuilder: (context, index) {
+        final item = _memorialItems[index];
+        return MemorialImageCard(
+          imagePath: item['imagePath']!,
+          tags: item['tags']!,
+        );
+      },
     );
   }
 
