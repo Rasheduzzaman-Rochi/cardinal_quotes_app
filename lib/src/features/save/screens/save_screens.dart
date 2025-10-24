@@ -105,28 +105,32 @@ class _SaveScreenState extends State<SaveScreen> {
             _buildTabButton(
               context: context,
               text: 'Audios',
-              iconPath: 'assets/icons/sounds.svg', // Using your icon
+              iconPath: 'assets/icons/sounds.svg',
+              filledIconPath: 'assets/icons/sounds_filled.svg',
               index: 0,
             ),
             const SizedBox(width: 12),
             _buildTabButton(
               context: context,
               text: 'Quotes',
-              iconPath: 'assets/icons/cardinal_quotes.svg', // Using your icon
+              iconPath: 'assets/icons/top.svg',
+              filledIconPath: 'assets/icons/top_filled.svg',
               index: 1,
             ),
             const SizedBox(width: 12),
             _buildTabButton(
               context: context,
               text: 'Wallpapers',
-              iconPath: 'assets/icons/wallpaper.svg', // Using your icon
+              iconPath: 'assets/icons/wallpaper.svg',
+              filledIconPath: 'assets/icons/wallpaper.svg',
               index: 2,
             ),
             const SizedBox(width: 12),
             _buildTabButton(
               context: context,
               text: 'Memorial Card',
-              iconPath: 'assets/icons/memorial_cards.svg', // Using your icon
+              iconPath: 'assets/icons/memorial_cards.svg',
+              filledIconPath: 'assets/icons/memorial_cards.svg',
               index: 3,
             ),
           ],
@@ -141,10 +145,15 @@ class _SaveScreenState extends State<SaveScreen> {
     required String text,
     required String iconPath,
     required int index,
+    required String? filledIconPath,
   }) {
     final bool isSelected = _selectedTabIndex == index;
     final colorScheme = Theme.of(context).colorScheme;
     final selectedColor = colorScheme.onSurface;
+
+    final String currentIconPath = (isSelected && filledIconPath != null)
+        ? filledIconPath
+        : iconPath;
 
     return InkWell(
       onTap: () {
@@ -154,7 +163,7 @@ class _SaveScreenState extends State<SaveScreen> {
       },
       borderRadius: BorderRadius.circular(15),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.onPrimary : Colors.transparent,
           borderRadius: BorderRadius.circular(15),
@@ -164,15 +173,15 @@ class _SaveScreenState extends State<SaveScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              iconPath,
-              height: 16,
-              width: 16,
+              currentIconPath,
+              height: 18,
+              width: 18,
               colorFilter: ColorFilter.mode(
                 isSelected ? selectedColor : colorScheme.onPrimary,
                 BlendMode.srcIn,
               ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 6),
             Text(
               text,
               style: TextStyle(
