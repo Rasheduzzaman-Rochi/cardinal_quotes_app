@@ -6,12 +6,14 @@ class AudioCard extends StatelessWidget {
   final String title;
   final String imagePath;
   final String tags;
+  final bool isSavedScreen;
 
   const AudioCard({
     super.key,
     required this.title,
     required this.imagePath,
     required this.tags,
+    this.isSavedScreen = false,
   });
 
   @override
@@ -50,10 +52,17 @@ class AudioCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                _buildActionRow(context),
               ],
             ),
           ),
+          if (isSavedScreen)
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              color: const Color(0xFFFF522F),
+              child: _buildRemoveActionRow(context),
+            )
+          else
+            _buildSaveActionRow(context),
         ],
       ),
     );
@@ -187,7 +196,7 @@ class AudioCard extends StatelessWidget {
     );
   }
 
-  Widget _buildActionRow(BuildContext context) {
+  Widget _buildSaveActionRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -195,6 +204,18 @@ class AudioCard extends StatelessWidget {
         _buildActionIcon(context, icon: Icons.share, text: 'Share'),
         _buildActionIcon(context, icon: Icons.download, text: 'Download'),
         _buildActionIcon(context, icon: Icons.bookmark, text: 'Save'),
+      ],
+    );
+  }
+
+  Widget _buildRemoveActionRow(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _buildActionIcon(context, icon: Icons.remove_red_eye, text: '567.57k'),
+        _buildActionIcon(context, icon: Icons.share, text: 'Share'),
+        _buildActionIcon(context, icon: Icons.download, text: 'Download'),
+        _buildActionIcon(context, icon: Icons.bookmark, text: 'Remove'),
       ],
     );
   }

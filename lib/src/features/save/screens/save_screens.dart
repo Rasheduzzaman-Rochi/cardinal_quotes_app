@@ -25,7 +25,7 @@ class _SaveScreenState extends State<SaveScreen> {
     {
       'imagePath': 'assets/images/memo_1.jpg',
       'tags': '#Ambition    #Inspiration    #Motivational',
-    }
+    },
   ];
 
   @override
@@ -207,6 +207,7 @@ class _SaveScreenState extends State<SaveScreen> {
           title: _wiperAudio['title'] ?? '',
           imagePath: _wiperAudio['imagePath'] ?? '',
           tags: _wiperAudio['tags'] ?? '',
+          isSavedScreen: true,
         ),
         // Add more saved audios here...
       ],
