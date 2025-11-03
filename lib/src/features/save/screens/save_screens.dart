@@ -66,20 +66,14 @@ class _SaveScreenState extends State<SaveScreen> {
       ),
       body: Column(
         children: [
-          // New Tab Buttons
           _buildTabBar(context),
-          // Content based on selected tab
           Expanded(
             child: IndexedStack(
               index: _selectedTabIndex,
               children: [
-                // Audios Tab Content
                 _buildAudioContent(),
-                // Quotes Tab Content
                 _buildQuotesContent(),
-                // Wallpapers Tab Content
                 _buildWallpapersContent(),
-                // Memorial Card Tab Content
                 _buildMemorialCardContent(),
               ],
             ),
