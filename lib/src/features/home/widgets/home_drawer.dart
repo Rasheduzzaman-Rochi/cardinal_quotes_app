@@ -4,7 +4,6 @@ import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
 import '../../memorial_cards/screens/memorial_card_screen.dart';
 import '../../save/screens/save_screens.dart';
-import '../../soul_check_in/screens/soul_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   final ValueChanged<int> onItemTapped;
