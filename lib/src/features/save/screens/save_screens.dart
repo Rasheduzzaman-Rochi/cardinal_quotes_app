@@ -31,11 +31,11 @@ class _SaveScreenState extends State<SaveScreen> {
   static const List<Map<String, String>> _wallpaperItems = [
     {
       'imagePath': 'assets/images/memo_1.jpg',
-      'tags': '#Ambition #Inspiration...',
+      'tags': '#Ambition   #Inspiration...',
     },
     {
       'imagePath': 'assets/images/memo_1.jpg',
-      'tags': '#Ambition #Inspiration...',
+      'tags': '#Ambition   #Inspiration...',
     },
   ];
 
@@ -240,12 +240,12 @@ class _SaveScreenState extends State<SaveScreen> {
   // Placeholder content for 'Wallpapers' tab
   Widget _buildWallpapersContent() {
     return GridView.builder(
-      padding: const EdgeInsets.all(21.0),
+      padding: const EdgeInsets.all(24.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 18,
         mainAxisSpacing: 16,
-        childAspectRatio: 0.85,
+        childAspectRatio: 0.86,
       ),
       itemCount: _wallpaperItems.length,
       itemBuilder: (context, index) {
@@ -269,22 +269,23 @@ class _SaveScreenState extends State<SaveScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Tags and More Icon
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          padding: const EdgeInsets.symmetric(horizontal: 1.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 tags,
                 style: TextStyle(
-                  color: colorScheme.onPrimary.withOpacity(0.8),
+                  color: colorScheme.onPrimary,
+                  fontWeight: FontWeight.w600,
                   fontSize: 12,
                 ),
               ),
+              const SizedBox(height: 6),
               Icon(
-                Icons.more_vert,
-                color: colorScheme.onPrimary.withOpacity(0.8),
+                Icons.more_vert_outlined,
+                color: Colors.white,
                 size: 20,
               ),
             ],
@@ -298,7 +299,7 @@ class _SaveScreenState extends State<SaveScreen> {
               imagePath,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Container(
-                color: Colors.grey.withOpacity(0.2),
+                color: Colors.grey.withAlpha(204),
                 child: const Center(child: Icon(Icons.image_not_supported)),
               ),
             ),
