@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
 import '../../memorial_cards/screens/memorial_card_screen.dart';
+import '../../save/screens/save_screens.dart';
+import '../../soul_check_in/screens/soul_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   final ValueChanged<int> onItemTapped;
@@ -20,7 +22,7 @@ class HomeDrawer extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(top: 40, bottom: 40, left: 20),
         decoration: BoxDecoration(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
         child: ListView(
@@ -63,7 +65,7 @@ class HomeDrawer extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                       shadows: [
                         Shadow(
-                          color: colorScheme.onSurface.withOpacity(0.30),
+                          color: AppTheme.buttonBrown,
                           offset: const Offset(1, 1),
                           blurRadius: 2,
                         ),
@@ -205,12 +207,19 @@ class HomeDrawer extends StatelessWidget {
         if (text == 'Memorial Card') {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const MemorialCardScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const MemorialCardScreen()),
           );
         } else if (text == 'Sleeping') {
           onItemTapped(1);
+        } else if (text == 'Save') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SaveScreen()),
+          );
+        } else if (text == 'Soul Check-In') {
+          onItemTapped(2);
+        } else if (text == 'Top Quotes') {
+          onItemTapped(3);
         }
       },
     );
@@ -237,7 +246,7 @@ class HomeDrawer extends StatelessWidget {
                 fontWeight: FontWeight.w900,
                 shadows: [
                   Shadow(
-                    color: colorScheme.onSurface.withOpacity(0.30),
+                    color: AppTheme.buttonBrown,
                     offset: const Offset(1, 1),
                     blurRadius: 2,
                   ),
