@@ -28,13 +28,23 @@ class _SaveScreenState extends State<SaveScreen> {
     },
   ];
 
+  static const List<Map<String, String>> _wallpaperItems = [
+    {
+      'imagePath': 'assets/images/memo_1.jpg',
+      'tags': '#Ambition #Inspiration...',
+    },
+    {
+      'imagePath': 'assets/images/memo_1.jpg',
+      'tags': '#Ambition #Inspiration...',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: colorScheme.primary,
-      // AppBar similar to audio_list_screen.dart
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight + 2),
         child: SafeArea(
@@ -83,7 +93,6 @@ class _SaveScreenState extends State<SaveScreen> {
     );
   }
 
-  // Widget to build the tab bar
   Widget _buildTabBar(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -230,11 +239,72 @@ class _SaveScreenState extends State<SaveScreen> {
 
   // Placeholder content for 'Wallpapers' tab
   Widget _buildWallpapersContent() {
-    return Center(
-      child: Text(
-        'Saved Wallpapers will appear here.',
-        style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 16),
+    return GridView.builder(
+      padding: const EdgeInsets.all(21.0),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 18,
+        mainAxisSpacing: 16,
+        childAspectRatio: 0.85,
       ),
+      itemCount: _wallpaperItems.length,
+      itemBuilder: (context, index) {
+        final item = _wallpaperItems[index];
+        return _buildWallpaperGridItem(
+          context: context,
+          imagePath: item['imagePath']!,
+          tags: item['tags']!,
+        );
+      },
+    );
+  }
+
+  Widget _buildWallpaperGridItem({
+    required BuildContext context,
+    required String imagePath,
+    required String tags,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Tags and More Icon
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                tags,
+                style: TextStyle(
+                  color: colorScheme.onPrimary.withOpacity(0.8),
+                  fontSize: 12,
+                ),
+              ),
+              Icon(
+                Icons.more_vert,
+                color: colorScheme.onPrimary.withOpacity(0.8),
+                size: 20,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Container(
+                color: Colors.grey.withOpacity(0.2),
+                child: const Center(child: Icon(Icons.image_not_supported)),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
