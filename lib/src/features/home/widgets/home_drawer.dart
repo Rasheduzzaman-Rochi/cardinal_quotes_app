@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../authentication/screens/login_screen.dart';
@@ -15,23 +16,23 @@ class HomeDrawer extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Drawer(
-      width: (screenWidth * 0.6) + 10,
+      width: (screenWidth * 0.6) + 10.w,
       backgroundColor: Colors.transparent,
       elevation: 0,
       child: Container(
-        margin: const EdgeInsets.only(top: 40, bottom: 40, left: 20),
+        margin: EdgeInsets.only(top: 40.h, bottom: 40.h, left: 20.w),
         decoration: BoxDecoration(
           color: colorScheme.surface,
-          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          borderRadius: BorderRadius.all(Radius.circular(16.r)),
         ),
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+              padding: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0),
               child: Column(
                 children: [
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5.h),
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
@@ -44,29 +45,29 @@ class HomeDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   Text(
                     '"Peace comes from within.\nDo not seek it without."',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: colorScheme.onSurface,
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       height: 1.3,
                     ),
                   ),
-                  const SizedBox(height: 09),
+                  SizedBox(height: 9.h),
                   Text(
                     'Buddha',
                     style: TextStyle(
                       color: colorScheme.onSurface,
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w900,
                       shadows: [
                         Shadow(
                           color: AppTheme.buttonBrown,
-                          offset: const Offset(1, 1),
-                          blurRadius: 2,
+                          offset: Offset(1.w, 1.h),
+                          blurRadius: 2.r,
                         ),
                       ],
                     ),
@@ -74,9 +75,9 @@ class HomeDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -164,7 +165,7 @@ class HomeDrawer extends StatelessWidget {
                     iconPath: 'assets/icons/save.svg',
                     text: 'Save',
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   _buildLogoutButton(context, colorScheme),
                 ],
               ),
@@ -186,8 +187,8 @@ class HomeDrawer extends StatelessWidget {
       visualDensity: const VisualDensity(vertical: -3),
       leading: SvgPicture.asset(
         iconPath,
-        height: 22,
-        width: 22,
+        height: 22.h,
+        width: 22.w,
         colorFilter: const ColorFilter.mode(
           AppTheme.buttonBrown,
           BlendMode.srcIn,
@@ -196,7 +197,7 @@ class HomeDrawer extends StatelessWidget {
       title: Text(
         text,
         style: TextStyle(
-          fontSize: 15,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w600,
           color: colorScheme.onSurface,
         ),
@@ -234,30 +235,30 @@ class HomeDrawer extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: EdgeInsets.symmetric(vertical: 10.0.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Log Out',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w900,
                 shadows: [
                   Shadow(
                     color: AppTheme.buttonBrown,
-                    offset: const Offset(1, 1),
-                    blurRadius: 2,
+                    offset: Offset(1.w, 1.h),
+                    blurRadius: 2.r,
                   ),
                 ],
                 color: colorScheme.onSurface,
               ),
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8.w),
             SvgPicture.asset(
               'assets/icons/logout.svg',
-              height: 24,
-              width: 24,
+              height: 24.h,
+              width: 24.w,
               colorFilter: ColorFilter.mode(
                 colorScheme.onSurface,
                 BlendMode.srcIn,
