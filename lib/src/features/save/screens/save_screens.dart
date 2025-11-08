@@ -1,6 +1,7 @@
 import 'package:cardinal_quotes_app/src/common_widgets/memorial_image_card.dart';
-import 'package:cardinal_quotes_app/src/features/sounds/widgets/AudioCard.dart';
+import 'package:cardinal_quotes_app/src/features/sounds/widgets/audio_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SaveScreen extends StatefulWidget {
@@ -46,27 +47,27 @@ class _SaveScreenState extends State<SaveScreen> {
     return Scaffold(
       backgroundColor: colorScheme.primary,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + 2),
+        preferredSize: Size.fromHeight(kToolbarHeight + 2.h),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: 10.w),
             child: Row(
               children: [
                 IconButton(
                   icon: Icon(
                     Icons.arrow_back_outlined,
                     color: colorScheme.onPrimary,
-                    size: 35,
+                    size: 35.w,
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
-                const SizedBox(width: 5),
+                SizedBox(width: 5.w),
                 Text(
                   'Save',
                   style: TextStyle(
                     color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: 22.sp,
                   ),
                 ),
               ],
@@ -95,12 +96,12 @@ class _SaveScreenState extends State<SaveScreen> {
 
   Widget _buildTabBar(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0.h),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            const SizedBox(width: 21.0),
+            SizedBox(width: 21.0.w),
             _buildTabButton(
               context: context,
               text: 'Audios',
@@ -108,7 +109,7 @@ class _SaveScreenState extends State<SaveScreen> {
               filledIconPath: 'assets/icons/sounds_filled.svg',
               index: 0,
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             _buildTabButton(
               context: context,
               text: 'Quotes',
@@ -116,7 +117,7 @@ class _SaveScreenState extends State<SaveScreen> {
               filledIconPath: 'assets/icons/top_filled.svg',
               index: 1,
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             _buildTabButton(
               context: context,
               text: 'Wallpapers',
@@ -124,7 +125,7 @@ class _SaveScreenState extends State<SaveScreen> {
               filledIconPath: 'assets/icons/wallpaper.svg',
               index: 2,
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             _buildTabButton(
               context: context,
               text: 'Memorial Card',
@@ -160,33 +161,33 @@ class _SaveScreenState extends State<SaveScreen> {
           _selectedTabIndex = index;
         });
       },
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(15.r),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.onPrimary : Colors.transparent,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: colorScheme.onPrimary, width: 1.5),
+          borderRadius: BorderRadius.circular(15.r),
+          border: Border.all(color: colorScheme.onPrimary, width: 1.5.w),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               currentIconPath,
-              height: 18,
-              width: 18,
+              height: 18.h,
+              width: 18.w,
               colorFilter: ColorFilter.mode(
                 isSelected ? selectedColor : colorScheme.onPrimary,
                 BlendMode.srcIn,
               ),
             ),
-            const SizedBox(width: 6),
+            SizedBox(width: 6.w),
             Text(
               text,
               style: TextStyle(
                 color: isSelected ? selectedColor : colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 14.sp,
               ),
             ),
           ],
@@ -198,11 +199,11 @@ class _SaveScreenState extends State<SaveScreen> {
   // Content for 'Audios' tab
   Widget _buildAudioContent() {
     return ListView(
-      padding: const EdgeInsets.only(
-        left: 21.0,
-        right: 21.0,
+      padding: EdgeInsets.only(
+        left: 21.0.w,
+        right: 21.0.w,
         top: 0,
-        bottom: 10.0,
+        bottom: 10.0.h,
       ),
       children: [
         // Reusing the AudioCard as requested
@@ -220,11 +221,11 @@ class _SaveScreenState extends State<SaveScreen> {
   // Placeholder content for 'Quotes' tab
   Widget _buildQuotesContent() {
     return ListView.builder(
-      padding: const EdgeInsets.only(
-        left: 21.0,
-        right: 21.0,
+      padding: EdgeInsets.only(
+        left: 21.0.w,
+        right: 21.0.w,
         top: 0,
-        bottom: 10.0,
+        bottom: 10.0.h,
       ),
       itemCount: _memorialItems.length,
       itemBuilder: (context, index) {
@@ -240,11 +241,11 @@ class _SaveScreenState extends State<SaveScreen> {
   // Placeholder content for 'Wallpapers' tab
   Widget _buildWallpapersContent() {
     return GridView.builder(
-      padding: const EdgeInsets.all(24.0),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      padding: EdgeInsets.all(24.0.w),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 18,
-        mainAxisSpacing: 16,
+        crossAxisSpacing: 18.w,
+        mainAxisSpacing: 16.h,
         childAspectRatio: 0.86,
       ),
       itemCount: _wallpaperItems.length,
@@ -270,7 +271,7 @@ class _SaveScreenState extends State<SaveScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          padding: EdgeInsets.symmetric(horizontal: 1.0.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -279,22 +280,22 @@ class _SaveScreenState extends State<SaveScreen> {
                 style: TextStyle(
                   color: colorScheme.onPrimary,
                   fontWeight: FontWeight.w600,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                 ),
               ),
-              const SizedBox(height: 6),
+              SizedBox(height: 6.h),
               Icon(
                 Icons.more_vert_outlined,
                 color: Colors.white,
-                size: 20,
+                size: 20.sp,
               ),
             ],
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -313,11 +314,11 @@ class _SaveScreenState extends State<SaveScreen> {
   Widget _buildMemorialCardContent() {
     // Reusing the MemorialImageCard
     return ListView.builder(
-      padding: const EdgeInsets.only(
-        left: 21.0,
-        right: 21.0,
+      padding: EdgeInsets.only(
+        left: 21.0.w,
+        right: 21.0.w,
         top: 0,
-        bottom: 10.0,
+        bottom: 10.0.h,
       ),
       itemCount: _memorialItems.length,
       itemBuilder: (context, index) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/AudioCard.dart';
+import '../widgets/audio_card.dart';
 
 class AudioListScreen extends StatelessWidget {
 

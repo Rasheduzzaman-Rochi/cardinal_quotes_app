@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'memorial_image_card.dart';
 
 class ContentListScreen extends StatelessWidget {
@@ -20,27 +21,27 @@ class ContentListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: colorScheme.primary,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + 2),
+        preferredSize: Size.fromHeight(kToolbarHeight + 2.h),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: 10.w),
             child: Row(
               children: [
                 IconButton(
                   icon: Icon(
                     Icons.arrow_back_outlined,
                     color: colorScheme.onPrimary,
-                    size: 35,
+                    size: 35.w,
                   ),
                   onPressed: onBackTapped ?? () => Navigator.of(context).pop(),
                 ),
-                const SizedBox(width: 5),
+                SizedBox(width: 5.w),
                 Text(
                   title,
                   style: TextStyle(
                     color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: 22.sp,
                   ),
                 ),
               ],
@@ -49,11 +50,11 @@ class ContentListScreen extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.only(
-          left: 21.0,
-          right: 21.0,
-          top: 12,
-          bottom: 10.0,
+        padding: EdgeInsets.only(
+          left: 21.0.w,
+          right: 21.0.w,
+          top: 12.h,
+          bottom: 10.0.h,
         ),
         itemCount: items.length,
         itemBuilder: (context, index) {

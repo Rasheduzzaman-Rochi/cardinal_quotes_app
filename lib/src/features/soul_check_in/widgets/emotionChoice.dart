@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../screens/share_something_dialog.dart';
 
 class EmotionChoice extends StatelessWidget {
@@ -18,9 +19,9 @@ class EmotionChoice extends StatelessWidget {
           builder: (context) => const ShareSomethingDialog(),
         );
       },
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(8.r),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+        padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 4.0.w),
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Row(
@@ -30,16 +31,16 @@ class EmotionChoice extends StatelessWidget {
                 Icon(
                   icon,
                   color: Theme.of(context).colorScheme.onSurface,
-                  size: 20,
+                  size: 20.w,
                 ),
-                const SizedBox(width: 6),
+                SizedBox(width: 6.w),
               ],
               Text(
                 text,
                 textAlign: icon == null ? TextAlign.center : TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 13,
+                  fontSize: 13.sp,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
                 softWrap: false,

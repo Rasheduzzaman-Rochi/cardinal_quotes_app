@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MemorialImageCard extends StatelessWidget {
   final String imagePath;
@@ -15,28 +16,28 @@ class MemorialImageCard extends StatelessWidget {
     return Card(
       color: Colors.transparent,
       elevation: 0,
-      margin: const EdgeInsets.only(bottom: 33),
+      margin: EdgeInsets.only(bottom: 33.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
               width: double.infinity,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
-                  height: 200,
+                  height: 200.h,
                   color: Colors.grey,
                   child: const Center(child: Text('Image not found')),
                 );
               },
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 8.0.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,11 +45,11 @@ class MemorialImageCard extends StatelessWidget {
                   tags,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onPrimary,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6.h),
                 _buildActionRow(context),
               ],
             ),
@@ -78,13 +79,13 @@ class MemorialImageCard extends StatelessWidget {
     final iconColor = Colors.white;
     return Row(
       children: [
-        Icon(icon, color: iconColor, size: 20),
-        const SizedBox(width: 4),
+        Icon(icon, color: iconColor, size: 20.w),
+        SizedBox(width: 4.w),
         Text(
           text,
           style: TextStyle(
             color: iconColor,
-            fontSize: 12,
+            fontSize: 12.sp,
             fontWeight: FontWeight.bold,
           ),
         ),

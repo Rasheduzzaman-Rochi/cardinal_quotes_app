@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
 import '../../memorial_cards/screens/memorial_card_screen.dart';
@@ -30,14 +31,14 @@ class FeatureGrid extends StatelessWidget {
     };
 
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15, bottom: 8),
+      padding: EdgeInsets.only(left: 25.0.w, right: 25.w, top: 15.h, bottom: 8.h),
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
+          crossAxisSpacing: 16.w,
+          mainAxisSpacing: 16.h,
           childAspectRatio: 1.5,
         ),
         itemCount: features.length,
@@ -58,7 +59,7 @@ class FeatureGrid extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     Widget iconWidget;
-    const iconSize = 35.0;
+    final iconSize = 35.w;
 
     if (iconPath.endsWith('.svg')) {
       iconWidget = SvgPicture.asset(
@@ -105,24 +106,24 @@ class FeatureGrid extends StatelessWidget {
           );
         }
       },
-      borderRadius: BorderRadius.circular(9),
+      borderRadius: BorderRadius.circular(9.r),
       child: Container(
         decoration: BoxDecoration(
           color: colorScheme.background,
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(9.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             iconWidget,
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Text(
               title.replaceAll(' ', '\n'),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: colorScheme.onSurface,
-                fontSize: 13,
+                fontSize: 13.sp,
                 height: 1.1,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TabButtons extends StatelessWidget {
@@ -15,13 +16,13 @@ class TabButtons extends StatelessWidget {
             text: 'Popular',
             iconPath: 'assets/icons/popular.svg',
           ),
-          const SizedBox(width: 21),
+          SizedBox(width: 21.w),
           _buildTabButton(
             context,
             text: 'Latest',
             iconPath: 'assets/icons/latest.svg',
           ),
-          const SizedBox(width: 21),
+          SizedBox(width: 21.w),
           _buildTabButton(
             context,
             text: 'Gratitude',
@@ -44,19 +45,19 @@ class TabButtons extends StatelessWidget {
       onPressed: () {},
       icon: SvgPicture.asset(
         iconPath,
-        height: 24,
-        width: 24,
+        height: 24.h,
+        width: 24.w,
         colorFilter: ColorFilter.mode(constantColor, BlendMode.srcIn),
       ),
       label: Text(
         text,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
       ),
       style: ElevatedButton.styleFrom(
         foregroundColor: constantColor,
         backgroundColor: colorScheme.background,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       ),
     );
   }

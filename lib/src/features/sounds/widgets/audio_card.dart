@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_theme.dart';
 
@@ -23,14 +24,14 @@ class AudioCard extends StatelessWidget {
     return Card(
       color: colorScheme.primary,
       elevation: 0,
-      margin: const EdgeInsets.only(bottom: 33),
+      margin: EdgeInsets.only(bottom: 33.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildImagePlayer(context),
-          const SizedBox(height: 13),
+          SizedBox(height: 13.h),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0),
+            padding: EdgeInsets.symmetric(horizontal: 2.0.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -39,25 +40,25 @@ class AudioCard extends StatelessWidget {
                   style: TextStyle(
                     color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4.h),
                 Text(
                   tags,
                   style: TextStyle(
                     color: colorScheme.onPrimary,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6.h),
               ],
             ),
           ),
           if (isSavedScreen)
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              padding: EdgeInsets.symmetric(vertical: 12.0.h),
               color: const Color(0xFFFF522F),
               child: _buildRemoveActionRow(context),
             )
@@ -77,7 +78,7 @@ class AudioCard extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -85,22 +86,22 @@ class AudioCard extends StatelessWidget {
             ),
           ),
           Container(
-            width: 190,
-            height: 180,
-            padding: const EdgeInsets.only(
-              left: 12,
-              right: 12,
-              top: 12,
-              bottom: 4,
+            width: 190.w,
+            height: 180.h,
+            padding: EdgeInsets.only(
+              left: 12.w,
+              right: 12.w,
+              top: 12.h,
+              bottom: 4.h,
             ),
             decoration: BoxDecoration(
               color: colorScheme.background,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
-                  blurRadius: 10,
-                  spreadRadius: 2,
+                  color: Colors.black.withAlpha(64),
+                  blurRadius: 10.r,
+                  spreadRadius: 2.r,
                 ),
               ],
             ),
@@ -108,12 +109,12 @@ class AudioCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  height: 100,
+                  height: 100.h,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.r),
                         child: Image.asset(
                           imagePath,
                           fit: BoxFit.cover,
@@ -124,30 +125,30 @@ class AudioCard extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                       ),
                       SvgPicture.asset(
                         'assets/icons/sound_wave.svg',
-                        height: 110,
+                        height: 110.h,
                         color: colorScheme.background,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: 2.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Icon(
                       Icons.play_arrow_rounded,
                       color: colorScheme.onSurface,
-                      size: 32,
+                      size: 32.w,
                     ),
                     Text(
                       '10.00',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 13.sp,
                         fontWeight: FontWeight.bold,
                         color: colorScheme.onSurface,
                       ),
@@ -157,7 +158,7 @@ class AudioCard extends StatelessWidget {
                 const SizedBox.shrink(),
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    trackHeight: 4.0,
+                    trackHeight: 4.0.h,
                     trackShape: const RoundedRectSliderTrackShape(),
                     activeTrackColor: AppTheme.buttonBrownDark,
                     inactiveTrackColor: AppTheme.buttonBrownDark.withOpacity(
@@ -172,16 +173,16 @@ class AudioCard extends StatelessWidget {
                   ),
                   child: Slider(value: 1, onChanged: (value) {}),
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: 2.h),
                 Text(
                   title,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: colorScheme.onSurface,
                     shadows: [
                       Shadow(
-                        color: colorScheme.onSurface.withOpacity(0.15),
+                        color: colorScheme.onSurface.withAlpha(38),
                         offset: const Offset(1, 1),
                         blurRadius: 1,
                       ),
@@ -229,12 +230,12 @@ class AudioCard extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: iconColor, size: 20),
-        const SizedBox(width: 4),
+        SizedBox(width: 4.w),
         Text(
           text,
           style: TextStyle(
             color: iconColor,
-            fontSize: 12,
+            fontSize: 12.sp,
             fontWeight: FontWeight.bold,
           ),
         ),

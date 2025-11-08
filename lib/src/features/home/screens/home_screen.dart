@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/feature_grid.dart';
 import '../widgets/featured_section.dart';
 import '../widgets/tab_buttons.dart';
@@ -17,9 +18,9 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                left: 16,
-                top: 3,
+              padding: EdgeInsets.only(
+                left: 16.w,
+                top: 3.h,
                 bottom: 0,
                 right: 0,
               ),
@@ -30,22 +31,22 @@ class HomeScreen extends StatelessWidget {
                     icon: Icon(
                       Icons.menu,
                       color: Theme.of(context).colorScheme.onPrimary,
-                      size: 28,
+                      size: 28.w,
                     ),
                     onPressed: () {
                       Scaffold.of(context).openDrawer();
                     },
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   // Pass the callback to the TabButtons widget
                   Expanded(child: TabButtons(onTabChange: onTabChange)),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
             FeatureGrid(onTabChange: onTabChange),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
 
             FeaturedSection(
               title: 'Featured Wallpaper',
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 'assets/images/featured wallpaper 3.jpg',
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
             FeaturedSection(
               title: 'Featured Quotes',
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                 'assets/images/featured_quotes_3.jpg',
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
             FeaturedSection(
               title: 'Featured Memorial Cards',
@@ -75,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                 'assets/images/featured MCards 3.jpg',
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
             FeaturedSection(
               title: 'Announcement',

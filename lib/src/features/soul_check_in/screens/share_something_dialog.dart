@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../constants/app_theme.dart';
 
 class ShareSomethingDialog extends StatefulWidget {
@@ -41,45 +42,45 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
       child: Container(
         decoration: BoxDecoration(
           color: colorScheme.background,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24,top: 22, bottom: 7),
+              padding: EdgeInsets.only(left: 24.w, right: 24.w,top: 22.h, bottom: 7.h),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   Text(
                     'Share something with us.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      fontSize: 17,
+                      fontSize: 17.sp,
                       color: colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 13),
+                  SizedBox(height: 13.h),
                   _buildTextBox(context),
-                  const SizedBox(height: 9),
+                  SizedBox(height: 9.h),
                   _buildActionButtons(context),
                 ],
               ),
             ),
             Positioned(
-              top: 9,
-              right: 6,
+              top: 9.h,
+              right: 6.w,
               child: InkWell(
                 onTap: () => Navigator.of(context).pop(),
                 customBorder: const CircleBorder(),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0.w),
                   child: Icon(
                     Icons.close,
                     color: AppTheme.buttonBrownDark,
-                    size: 24,
+                    size: 24.sp,
                   ),
                 ),
               ),
@@ -92,7 +93,7 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
 
   Widget _buildTextBox(BuildContext context) {
     return SizedBox(
-      height: 180,
+      height: 180.h,
       child: TextFormField(
         controller: _textController,
         expands: true,
@@ -100,19 +101,19 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
         textAlignVertical: TextAlignVertical.top,
         decoration: InputDecoration(
           hintText: 'I',
-          contentPadding: const EdgeInsets.all(10),
+          contentPadding: EdgeInsets.all(10.w),
           filled: true,
-          fillColor: AppTheme.textFieldBorder.withOpacity(0.2),
+          fillColor: AppTheme.backgroundColor,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             borderSide: BorderSide.none,
           ),
         ),
@@ -125,17 +126,17 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
     return Row(
       children: [
         SizedBox(
-          width: 90,
+          width: 90.w,
           child: OutlinedButton(
             onPressed: () => Navigator.of(context).pop(),
             style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              side: const BorderSide(
+              padding: EdgeInsets.symmetric(vertical: 12.h),
+              side: BorderSide(
                 color: AppTheme.unselectedBorder,
-                width: 1.3,
+                width: 1.3.w,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
               ),
             ),
             child: Text(
@@ -143,12 +144,12 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: colorScheme.onSurface,
-                fontSize: 16,
+                fontSize: 16.sp,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 43),
+        SizedBox(width: 43.w),
         Expanded(
           child: ElevatedButton(
             onPressed: _isContinueEnabled
@@ -159,16 +160,16 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
                 : null,
             style: ButtonStyle(
               padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 12),
+                EdgeInsets.symmetric(vertical: 12.h),
               ),
               shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
               ),
               backgroundColor: MaterialStateProperty.resolveWith<Color>((
                   Set<MaterialState> states,
                   ) {
                 if (states.contains(MaterialState.disabled)) {
-                  return AppTheme.buttonBrown.withOpacity(0.5);
+                  return AppTheme.buttonBrown.withAlpha(128);
                 }
                 return AppTheme.buttonBrownDark;
               }),
@@ -176,14 +177,14 @@ class _ShareSomethingDialogState extends State<ShareSomethingDialog> {
                   Set<MaterialState> states,
                   ) {
                 if (states.contains(MaterialState.disabled)) {
-                  return Colors.white.withOpacity(0.7);
+                  return Colors.white.withAlpha(179);
                 }
                 return Colors.white;
               }),
             ),
-            child: const Text(
+            child: Text(
               'Continue',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
             ),
           ),
         ),
