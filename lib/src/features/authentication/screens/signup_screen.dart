@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
+import '../widgets/auth_button.dart';
 import '../widgets/custom_textfield.dart';
 import 'login_screen.dart';
 
@@ -88,18 +89,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildAuthButton('Sign Up', _isSignUpSelected, () {
-                      setState(() => _isSignUpSelected = true);
-                    }),
+                    AuthButton(
+                      text: 'Sign Up',
+                      isSelected: _isSignUpSelected,
+                      onPressed: () {
+                        setState(() => _isSignUpSelected = true);
+                      },
+                    ),
                     const SizedBox(width: 65),
-                    _buildAuthButton('Log In', !_isSignUpSelected, () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
-                    }),
+                    AuthButton(
+                      text: 'Log In',
+                      isSelected: !_isSignUpSelected,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 40),
@@ -146,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         backgroundColor:
                             AppTheme.buttonBrownDark, // Using theme color
                         disabledBackgroundColor: AppTheme.buttonBrownDark
-                            .withOpacity(0.5),
+                            .withValues(alpha: 0.5),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -170,54 +179,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  Widget _buildAuthButton(
-    String text,
-    bool isSelected,
-    VoidCallback onPressed,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return isSelected
-        ? ElevatedButton(
-            onPressed: onPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.buttonBrownDark, // Using theme color
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: colorScheme.onPrimary,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          )
-        : OutlinedButton(
-            onPressed: onPressed,
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(
-                color: AppTheme.unselectedBorder,
-                width: 1.5,
-              ), // Using theme color
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: colorScheme.onSurface,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          );
   }
 }
