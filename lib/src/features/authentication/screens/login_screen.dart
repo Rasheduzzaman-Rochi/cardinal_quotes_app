@@ -1,6 +1,7 @@
 import 'package:cardinal_quotes_app/src/features/main/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
+import '../widgets/auth_button.dart';
 import '../widgets/custom_textfield.dart';
 import 'signup_screen.dart';
 
@@ -74,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildAuthButton('Sign Up', false, () {
+                    AuthButton(text: 'Sign Up', isSelected: false, onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
@@ -83,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     }),
                     const SizedBox(width: 65),
-                    _buildAuthButton('Log In', true, () {
+                    AuthButton(text: 'Log In', isSelected: true, onPressed: () {
                       // Already on this screen, do nothing
                     }),
                   ],
@@ -142,54 +143,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  Widget _buildAuthButton(
-    String text,
-    bool isSelected,
-    VoidCallback onPressed,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return isSelected
-        ? ElevatedButton(
-            onPressed: onPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.buttonBrownDark,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: colorScheme.onPrimary,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          )
-        : OutlinedButton(
-            onPressed: onPressed,
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(
-                color: AppTheme.unselectedBorder,
-                width: 1.5,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: colorScheme.onSurface,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          );
   }
 }

@@ -6,7 +6,8 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController controller;
 
-  const CustomTextField({super.key,
+  const CustomTextField({
+    super.key,
     required this.hintText,
     required this.controller,
     this.isPassword = false,
@@ -28,24 +29,26 @@ class _CustomTextFieldState extends State<CustomTextField> {
       obscureText: widget.isPassword ? _isObscured : false,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: TextStyle(color: colorScheme.onSurface.withValues(alpha:0.8)),
+        hintStyle: TextStyle(
+          color: colorScheme.onSurface.withValues(alpha: 0.8),
+        ),
         suffixIcon: widget.isPassword
             ? Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                        icon: Icon(
-              _isObscured
-                  ? Icons.visibility_off_rounded
-                  : Icons.visibility_rounded,
-              color: AppTheme.buttonBrown,
-                        ),
-                        onPressed: () {
-              setState(() {
-                _isObscured = !_isObscured;
-              });
-                        },
-                      ),
-            )
+                padding: const EdgeInsets.only(right: 8.0),
+                child: IconButton(
+                  icon: Icon(
+                    _isObscured
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
+                    color: AppTheme.buttonBrown,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  },
+                ),
+              )
             : null,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
