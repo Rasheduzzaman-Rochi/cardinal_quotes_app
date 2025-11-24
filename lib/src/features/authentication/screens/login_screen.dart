@@ -1,7 +1,7 @@
 import 'package:cardinal_quotes_app/src/features/main/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_theme.dart';
-import '../widgets/custom_textField.dart';
+import '../widgets/custom_textfield.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -117,7 +117,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.buttonBrownDark,
-                        disabledBackgroundColor: AppTheme.buttonBrownDark.withAlpha(128),
+                        disabledBackgroundColor: AppTheme.buttonBrownDark
+                            .withAlpha(128),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
