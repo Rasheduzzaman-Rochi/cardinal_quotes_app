@@ -41,12 +41,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _validateInputs() {
-    // Check if all text fields are not empty
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
     final isFormValid =
         _usernameController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
         _confirmPasswordController.text.isNotEmpty &&
-        _emailController.text.isNotEmpty;
+        emailRegex.hasMatch(_emailController.text) &&
+        _passwordController.text == _confirmPasswordController.text;
+
     // Update the state only if it has changed
     if (_isButtonEnabled != isFormValid) {
       setState(() {

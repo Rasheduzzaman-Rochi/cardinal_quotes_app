@@ -34,8 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _validateInputs() {
-    final isFormValid =
-        _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final isEmailValid = emailRegex.hasMatch(_emailController.text);
+    final isPasswordNotEmpty = _passwordController.text.isNotEmpty;
+    final isFormValid = isEmailValid && isPasswordNotEmpty;
+
     if (_isButtonEnabled != isFormValid) {
       setState(() {
         _isButtonEnabled = isFormValid;
